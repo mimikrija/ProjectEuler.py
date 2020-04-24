@@ -7,3 +7,10 @@ def IsMultipleOf(NaturalNumber,divisor):
         return True
     else:
         return False
+
+Solution = 0
+for Candidate in range(1,1000): # range (1,1000) goes from 1 to 999
+    if ( IsMultipleOf(Candidate,3) or IsMultipleOf(Candidate,5) ):
+        Solution += Candidate
+
+print("the sum of all the multiples of 3 or 5 below 1000 is: ", Solution)
