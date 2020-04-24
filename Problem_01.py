@@ -3,10 +3,7 @@
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
 def IsMultipleOf(NaturalNumber,divisor):
-    if (NaturalNumber%divisor == 0):
-        return True
-    else:
-        return False
+    return (NaturalNumber%divisor == 0)
 
 Solution = 0
 for Candidate in range(1,1000): # range (1,1000) goes from 1 to 999
