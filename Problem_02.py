@@ -11,3 +11,12 @@ def FibonacciTerm(Term):
         return Term
     else:
         return FibonacciTerm(Term-1) + FibonacciTerm(Term-2)
+
+counter = 1
+Solution = 0
+while (FibonacciTerm(counter) <= 4000000):
+    if FibonacciTerm(counter)%2 == 0:
+        Solution += FibonacciTerm(counter)
+    counter += 1
+
+print("Sum of even-valued Fibonacci terms whose values do not exceed four million is: ", Solution)
