@@ -10,3 +10,14 @@ def IsPrime(Number):
     return True
 
 input = 600851475143
+
+Solution = input
+
+divisor=2
+while (Solution//divisor > 1):
+    if IsPrime(divisor) and Solution%divisor == 0:
+        Solution = Solution //divisor
+    else:
+        divisor+=1
+
+print ("The largest prime factor of the ", input, " is ", Solution, "!")
