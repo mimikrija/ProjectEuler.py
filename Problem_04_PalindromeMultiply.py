@@ -17,3 +17,14 @@ def IsPalindrome(Number):
         # every single digit number is a palindrome
         return True
 
+Solution = 1
+for FirstNumber in range (999,99,-1):
+    for SecondNumber in range (999,99,-1):
+        Prospect = FirstNumber*SecondNumber
+        if Prospect < Solution:
+            continue
+        if IsPalindrome(Prospect):
+            Solution = Prospect
+
+
+print ("The largest palindrome made from the product of two 3-digit numbers is: ", Solution)
