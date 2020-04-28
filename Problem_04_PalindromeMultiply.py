@@ -19,7 +19,7 @@ def IsPalindrome(Number):
 
 Solution = 1
 for FirstNumber in range (999,99,-1):
-    for SecondNumber in range (999,99,-1):
+    for SecondNumber in range (FirstNumber,99,-1):
         Prospect = FirstNumber*SecondNumber
         if Prospect < Solution:
             continue
