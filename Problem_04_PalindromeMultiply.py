@@ -25,6 +25,9 @@ for FirstNumber in range (999,99,-1):
             continue
         if IsPalindrome(Prospect):
             Solution = Prospect
+            FactorOne = FirstNumber
+            FactorTwo = SecondNumber
 
 
-print ("The largest palindrome made from the product of two 3-digit numbers is: ", Solution)
+
+print ("The largest palindrome made from the product of two 3-digit numbers is: ", FactorOne, " x ", FactorTwo, " = ", Solution)
