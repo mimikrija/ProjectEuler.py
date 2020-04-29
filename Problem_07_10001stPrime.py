@@ -6,7 +6,9 @@
 import time
 
 def is_prime(candidate):
-    for divisor in range(2,candidate):
+    if candidate > 3 and candidate%2 == 0:
+        return False
+    for divisor in range(3,candidate):
         if candidate%divisor == 0:
             return False
     return True
