@@ -10,3 +10,12 @@ def evenly_divisible(number,max_divisor):
             return False
     return True
 
+solution = 1
+for factor in range (2,21):
+    solution *= factor
+
+for factor in range (2,21):
+    while solution % factor == 0 and evenly_divisible(solution//factor,20):
+        solution = solution // factor
+
+print ("The smallest positive number that is evenly divisible by all of the numbers from 1 to 20 is: ", solution)
