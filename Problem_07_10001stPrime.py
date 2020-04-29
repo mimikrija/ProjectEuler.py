@@ -9,3 +9,12 @@ def is_prime(candidate):
         if candidate%divisor == 0:
             return False
     return True
+
+counter = 0
+candidate = 1
+while counter < 10001:
+    candidate +=1
+    if is_prime(candidate):
+        counter += 1
+
+print (counter, "-th prime is ", candidate )
