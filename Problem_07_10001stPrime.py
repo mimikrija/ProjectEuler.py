@@ -11,11 +11,19 @@ def is_prime(candidate):
             return False
     return True
 
-counter = 1
-solution = 1
+counter = 2
+solution = 3
+count_n = 1
+switch_n = False
 start = time.time()
 while counter < 10001:
-    solution +=2
+    if not switch_n:
+        solution = 6*count_n - 1
+        switch_n = True
+    else:
+        solution = 6*count_n + 1
+        count_n += 1
+        switch_n = False
     if is_prime(solution):
         counter += 1
 end = time.time()
