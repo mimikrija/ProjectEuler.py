@@ -5,6 +5,7 @@
 # # Find the sum of all the primes below two million.
 
 import math
+import time
 
 def is_prime(candidate):
     if candidate == 1:
@@ -22,8 +23,12 @@ def is_prime(candidate):
             return False
     return True
 
+start = time.time()
 solution = 0
 for potential_prime in range(1,2000000):
     if is_prime(potential_prime):
         solution += potential_prime
+end = time.time()
+
 print("sum of all primes below two million is: ", solution)
+print ("total solution time: ", end-start)
