@@ -24,10 +24,22 @@ def is_prime(candidate):
     return True
 
 start = time.time()
-solution = 0
-for potential_prime in range(1,2000000):
+solution = 5
+potential_prime = 4
+k = 1
+switch_k = False
+while potential_prime <= 2000000:
     if is_prime(potential_prime):
         solution += potential_prime
+    if not switch_k:
+        potential_prime = 6*k - 1
+    else:
+        potential_prime = 6*k + 1
+        k += 1
+    
+    switch_k = not switch_k
+
+        
 end = time.time()
 
 print("sum of all primes below two million is: ", solution)
