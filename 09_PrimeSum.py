@@ -21,4 +21,9 @@ def is_prime(candidate):
         if candidate%divisor == 0:
             return False
     return True
-    
+
+solution = 0
+for potential_prime in range(1,2000000):
+    if is_prime(potential_prime):
+        solution += potential_prime
+print("sum of all primes below two million is: ", solution)
