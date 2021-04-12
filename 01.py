@@ -2,12 +2,13 @@
 # The sum of these multiples is 23.
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
-def IsMultipleOf(NaturalNumber,divisor):
-    return (NaturalNumber%divisor == 0)
+def is_multiple_of_any(num, divisors):
+    "returns if `num` is divisible by any of the `divisors`"
+    return any(num % divisor == 0 for divisor in divisors)
 
-Solution = 0
-for Candidate in range(1,1000): # range (1,1000) goes from 1 to 999
-    if ( IsMultipleOf(Candidate,3) or IsMultipleOf(Candidate,5) ):
-        Solution += Candidate
+solution = sum(candidate for candidate in range(1, 1000)
+                        if is_multiple_of_any(candidate, (3, 5)))
 
-print("the sum of all the multiples of 3 or 5 below 1000 is: ", Solution)
+
+print(f'the sum of all the multiples of 3 or 5 below 1000 is: {solution}')
+# the sum of all the multiples of 3 or 5 below 1000 is: 233168
