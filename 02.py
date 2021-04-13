@@ -6,40 +6,26 @@
 # By considering the terms in the Fibonacci sequence whose values do not exceed four million,
 # find the sum of the even-valued terms.
 
-from itertools import islice
+def even_fibos(lim):
+    "returns only even fibonacci numbers lower than `lim`"
+    # first three members are n
+    for n in range(1, 4):
+        prev = n - 1
+        current = n
+        if current %2 == 0:
+            yield current
+    # otherwise they are a sum of previous two
+    while True:
+        old_current = current
+        current += prev
+        if current > lim:
+            return
+        prev = old_current
+        if current % 2 == 0:
+            yield current
 
-
-def memoize(function):
-    """ memoize whatever is going on in `function` """
-    memoized = {}
-    def wrap(arg):
-        if arg not in memoized:
-            memoized[arg] = function(arg)
-        return memoized[arg]
-    return wrap
-
-
-@memoize # this is the same as writing: fibonacci = memoize(fibonacci)
-def fibonacci(n):
-    if n < 3:
-        return n
-    else:
-        return fibonacci(n-2) + fibonacci(n-1)
-
-
-def fibo_even_generator(lim):
-    "generates even fibonacci numbers smaller than `lim`"
-    n = 0
-    current_fib = 0
-    while current_fib < lim:
-        if current_fib % 2 == 0:
-            yield current_fib
-        n += 1
-        current_fib = fibonacci(n)
-
-fibo_evens = fibo_even_generator(4000000)
-
-solution = sum(n for n in islice(fibo_evens, None))
+fibos = even_fibos(4*1000*1000)
+solution = sum(n for n in fibos)
 
 print(f"Sum of even-valued Fibonacci terms whose values do not exceed four million is: {solution}")
 # Sum of even-valued Fibonacci terms whose values do not exceed four million is:  4613732
