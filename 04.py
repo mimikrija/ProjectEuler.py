@@ -6,16 +6,7 @@
 
 def IsPalindrome(Number):
     Candidate = str(Number)
-    Digits = len(Candidate)
-    if (Digits > 1):
-        # do some testing - this will work for both even and odd number of digits
-        for digitcounter in range (0,Digits//2):
-            if (Candidate[digitcounter] != Candidate[-digitcounter-1]):
-                return False
-        return True
-    else:
-        # every single-digit number is a palindrome
-        return True
+    return Candidate == Candidate[::-1]
 
 Solution = 1
 for FirstNumber in range (999,99,-1):
