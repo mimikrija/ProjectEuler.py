@@ -3,21 +3,24 @@
 # The prime factors of 13195 are 5, 7, 13 and 29.
 # What is the largest prime factor of the number 600851475143 ?
 
-def IsPrime(Number):
-    for divisor in range(2,Number):
-        if Number%divisor == 0:
-            return False
-    return True
+from math import sqrt
 
-input = 600851475143
+def largest_prime_factor(n):
+    # keep dividing it by zero until we reach an odd number
+    while n % 2 == 0:
+        n //= 2
 
-Solution = input
+    # if we get to 3 and smaller just return that
+    if n <= 3:
+        return n
 
-divisor=2
-while (Solution//divisor > 1):
-    if IsPrime(divisor) and Solution%divisor == 0:
-        Solution = Solution //divisor
-    else:
-        divisor+=1
+    # otherwise keep dividing it with odd numbers
+    for odd in range(3, int(sqrt(n)) + 1, 2):
+        while n % odd == 0:
+            max_prime = odd
+            n //= odd
+            if n == 1:
+                return max_prime
 
-print ("The largest prime factor of the ", input, " is ", Solution, "!")
+input_num = 600851475143
+print(f"The largest prime factor of {input_num} is {largest_prime_factor(input_num)}!")
