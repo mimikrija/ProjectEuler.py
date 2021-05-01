@@ -11,4 +11,5 @@ for natural in range(1,101):
     natural_sum += natural
 
 square_of_the_sum = natural_sum**2
-print ("solution is: ", square_of_the_sum - sum_of_the_squares)
+print(f"Solution is: {square_of_the_sum - sum_of_the_squares}")
+# 25164150
