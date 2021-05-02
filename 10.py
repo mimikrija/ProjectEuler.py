@@ -7,24 +7,26 @@
 from math import floor, sqrt
 from itertools import islice
 from time import time
+from collections import deque
 
+# Sieve of Erathosten
+# eliminate all composites below N to get a list of primes
 
-def prime_generator(limit):
-    for prime in (2, 3, 5, 7):
-        yield prime
-
-    while prime < limit:
-        prime += 2
-        if any(prime % divisor == 0 for divisor in range(3, floor(sqrt(prime) + 1))):
-            pass
+def primes(limit):
+    primes = deque([n for n in range(2, limit)])
+    while True:
+        candidate = primes.popleft()
+        if candidate > sqrt(limit):
+            primes.append(candidate)
+            return primes
         else:
-            yield prime
+            primes = deque([n for n in primes if n % candidate != 0])
+            primes.append(candidate)
 
 UNDER = 2 * 1000 * 1000
-pr = prime_generator(UNDER)
 a = time()
-solution = sum(prime for prime in islice(pr, None))
+solution = sum(primes(2*1000*1000))
 b = time()
-print(f'sum of primes smaller than {UNDER} is {solution} and it takes {b-a} seconds to solve it.')
-# 142913828922, ~20 s
 
+print(f'sum of primes smaller than {UNDER} is {solution} and it takes {b-a} seconds to solve it.')
+# 142913828922, ~12 s
