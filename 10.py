@@ -13,7 +13,8 @@ from collections import deque
 # eliminate all composites below N to get a list of primes
 
 def primes(limit):
-    primes = deque([n for n in range(2, limit)])
+    # eliminate even numbers greater than 2
+    primes = deque([2] + [n for n in range(3, limit, 2)])
     while True:
         candidate = primes.popleft()
         if candidate > sqrt(limit):
@@ -29,4 +30,4 @@ solution = sum(primes(2*1000*1000))
 b = time()
 
 print(f'sum of primes smaller than {UNDER} is {solution} and it takes {b-a} seconds to solve it.')
-# 142913828922, ~12 s
+# 142913828922, ~8 s
