@@ -14,20 +14,19 @@ from collections import deque
 
 def primes(limit):
     # eliminate even numbers greater than 2
-    primes = deque([2] + [n for n in range(3, limit, 2)])
-    while True:
-        candidate = primes.popleft()
-        if candidate > sqrt(limit):
-            primes.append(candidate)
-            return primes
-        else:
-            primes = deque([n for n in primes if n % candidate != 0])
-            primes.append(candidate)
+    primes = {n: False for n in range(3, limit, 2)}
+    primes[2] = False
+    for n in range(3, floor(sqrt(limit)+1), 2):
+        for p in range(2*n, limit, n):
+            # cross out multiples of n
+            primes[p] = True
+    return sum(p for p, crossed_out in primes.items() if not crossed_out)
+
 
 UNDER = 2 * 1000 * 1000
 a = time()
-solution = sum(primes(2*1000*1000))
+solution = primes(UNDER)
 b = time()
 
 print(f'sum of primes smaller than {UNDER} is {solution} and it takes {b-a} seconds to solve it.')
-# 142913828922, ~8 s
+# 142913828922, ~2.5 s
